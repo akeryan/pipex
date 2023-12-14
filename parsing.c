@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 13:03:27 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/14 13:04:29 by akeryan          ###   ########.fr       */
+/*   Created: 2023/12/14 14:33:31 by akeryan           #+#    #+#             */
+/*   Updated: 2023/12/14 14:36:07 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
 
-int main(int argc, char *argv[])
+void	parsing(int argc, char *argv[])
 {
-
-	return (0);
+	return ;
 }
