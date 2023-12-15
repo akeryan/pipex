@@ -6,7 +6,7 @@
 #    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 19:39:20 by akeryan           #+#    #+#              #
-#    Updated: 2023/12/15 17:56:33 by akeryan          ###   ########.fr        #
+#    Updated: 2023/12/15 20:54:48 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAGS		= -Wall -Wextra -Werror
 LINKS		= -Ilibft -Llibft -lft
 
 LIBFT_DIR	= libft
-MANDATORY	= pipex.c path.c
+MANDATORY	= pipex.c path.c utils.c
 CC			= cc
 
 

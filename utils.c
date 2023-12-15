@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 13:03:49 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/15 20:52:48 by akeryan          ###   ########.fr       */
+/*   Created: 2023/12/15 20:46:23 by akeryan           #+#    #+#             */
+/*   Updated: 2023/12/15 20:52:08 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PIPEX_H
-# define PIPEX_H
+#include "pipex.h"
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "libft/libft.h"
+void	error_ptr(void *ptr, char *f_name)
+{
+	if (ptr == NULL)
+	{
+		printf("Something wrong with %s\n", f_name);
+		exit(EXIT_FAILURE);
+	}
+}
 
-char	*get_path(char *cmd, char *env[]);
-void	error_ptr(void *ptr, char *f_name);
-void	error_value(int v, char *f_name);
-
-# ifndef BONUS_AVAILABLE
-#  define BONUS 0
-# else 
-#  define BONUS 1
-# endif
-
-#endif
+void	error_value(int v, char *f_name)
+{
+	if (v < 0)
+	{
+		printf("Something wrong with %s\n", f_name);
+		exit(EXIT_FAILURE);
+	}
+}

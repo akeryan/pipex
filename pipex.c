@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:27 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/15 18:02:51 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/15 20:38:30 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,13 @@ int main(int argc, char *argv[], char *env[])
 		//printf("%s\n", env[i]);
 		//i++;
 	//}
-	get_path(argv[1], env);
+	char *pth = get_path(argv[2], env);
+	if (!pth)
+	{
+		printf("command '%s' does not exist\n", argv[2]);
+		exit(EXIT_FAILURE);
+	}
+	printf("path: %s\n", pth);
 
 	if (argc < 1) { perror("Number of arguments is incorrect\n"); return (1); }
 
