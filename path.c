@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 13:03:49 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/15 17:54:07 by akeryan          ###   ########.fr       */
+/*   Created: 2023/12/15 17:44:56 by akeryan           #+#    #+#             */
+/*   Updated: 2023/12/15 20:01:58 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PIPEX_H
-# define PIPEX_H
+#include "pipex.h"
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "libft/libft.h"
+static int	get_path_indx(char *env[]);
 
+char *get_path(char *cmd, char *env[])
+{
+	char **paths = ft_split(env[4], ':');
+	while (paths[i] != NULL)
+	{
+		printf("%s\n", paths[i]);
+		i++;
+	}
+	return ("Aram");
+}
 
-char	*get_path(char *cmd, char *env[]);
+static int	get_path_indx(char *env[])
+{
+	int i = 0;
+	int loc;
 
-# ifndef BONUS_AVAILABLE
-#  define BONUS 0
-# else 
-#  define BONUS 1
-# endif
-
-#endif
+	while (env[i])
+	{
+		loc = ft_strncmp(env[i], "PATH", 4);
+		if ( loc == 0)
+			return (i);	
+		i++;
+	}
+	return (-1);
+}

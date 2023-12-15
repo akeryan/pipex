@@ -6,21 +6,26 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:27 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/15 15:31:27 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/15 18:02:51 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[], char *env[])
 {
 	char	**args[2];
 	int		pid[2]; // process id's
 	int		pipe_fd1[2]; // pipes
-	char	*cmd[2];
-	//pid_t	w_pid[2];
-	//int		w_state[2];
 	int		file_fd[2]; // files
+
+	//int i = 0;
+	//while(env[i] != NULL)
+	//{
+		//printf("%s\n", env[i]);
+		//i++;
+	//}
+	get_path(argv[1], env);
 
 	if (argc < 1) { perror("Number of arguments is incorrect\n"); return (1); }
 
@@ -39,23 +44,6 @@ int main(int argc, char *argv[])
 	args[1] = ft_split(argv[3], ' ');
 	if (args[1] == NULL) {perror("memory allocation for args[1] failed"); return (1);}
 
-	//int i = 0;
-	//printf("cmd_1: ");
-	//while(args[0][i] != NULL)
-	//{
-		//printf("%s ", args[0][i]);
-		//i++;
-	//}
-	//printf("\n");
-	//printf("cmd_2: ");
-	//i = 0;
-	//while(args[1][i] != NULL)
-	//{
-		//printf("%s ", args[1][i]);
-		//i++;
-	//}
-	//printf("\n");
-
 	pid[0] = fork();
 	if (pid[0] == -1) {printf("pid[0] = fork() failed\n"); return (1); }
 
@@ -66,9 +54,10 @@ int main(int argc, char *argv[])
 		close(pipe_fd1[1]);
 		close(file_fd[0]);
 		close(file_fd[1]);
-		char *path = "/bin/";
-		cmd[0] = ft_strjoin(path, args[0][0]);
-		if (execve(cmd[0], args[0], NULL) == -1) {	perror("execve broke, smth went wrong"); return (1); }
+		//char *path = "/bin/";
+		//cmd[0] = ft_strjoin(path, args[0][0]);
+		//if (cmd[0] == NULL) {perror("memmory allocation for cmd[0] failded"); return (1); }
+		if (execve(env[0], args[0], env) == -1) {	perror("execve broke, smth went wrong"); return (1); }
 	}	
 	
 	pid[1] = fork();
@@ -79,14 +68,14 @@ int main(int argc, char *argv[])
 		if (dup2(pipe_fd1[0], STDIN_FILENO) < 0) { perror("dup2 in child process 1 failed\n"); return (4); }
 		if (dup2(file_fd[1], STDOUT_FILENO) < 0) { perror("dup2 failed"); return(1);}
 		close(pipe_fd1[0]);
-		//close(file_fd[1]);
+		close(file_fd[1]);
 		close(pipe_fd1[1]);
-		//close(file_fd[0]);
-		char *path = "/usr/bin/";
-		cmd[1] = ft_strjoin(path, args[1][0]);
-		if (cmd[1] == NULL) {perror("memmory allocation for cmd[2] failded"); return (1); }
-		if (execve(cmd[1], args[1], NULL) < 0) { perror("execve in child 2 failed"); return (1); }
+		close(file_fd[0]);
+		//char *path = "/usr/bin/";
+		//cmd[1] = ft_strjoin(path, args[1][0]);
+		//if (cmd[1] == NULL) {perror("memmory allocation for cmd[2] failded"); return (1); }
+		if (execve(env[0], args[1], env) < 0) { perror("execve in child 2 failed"); return (1); }
 	}
-	wait(NULL);	
+	//wait(NULL);	
 	return (0);
 }
