@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:27 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/16 12:53:49 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/16 13:03:31 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ int main(int argc, char *argv[], char *env[])
 	int		pipe_fd1[2];
 	int		file_fd[2];
 	char	*pth;
-
-	pth = get_cmd_path(argv[2], env);
-	error_check(pth, "Command couldn't be found: get_cmd_path()", PTR);
-	free(pth);
-	printf("path: %s\n", pth);
 
 	if (argc < 1)
 	error_msg("Number of arguments in main is incorrect");
@@ -56,8 +51,11 @@ int main(int argc, char *argv[], char *env[])
 		close(pipe_fd1[1]);
 		close(file_fd[0]);
 		close(file_fd[1]);
-		if (execve(env[0], args[0], env) == -1)
+		pth = get_cmd_path(args[0][0], env);
+		if (execve(pth, args[0], env) == -1)
 			error_msg("execve failed in child pid[0]");
+		free(pth);
+		pth = NULL;
 	}	
 	
 	pid[1] = fork();
@@ -74,10 +72,10 @@ int main(int argc, char *argv[], char *env[])
 		close(file_fd[1]);
 		close(pipe_fd1[1]);
 		close(file_fd[0]);
-		//char *path = "/usr/bin/";
-		//cmd[1] = ft_strjoin(path, args[1][0]);
-		//if (cmd[1] == NULL) {perror("memmory allocation for cmd[2] failded"); return (1); }
-		if (execve(env[0], args[1], env) < 0)
+		pth = get_cmd_path(args[1][0], env);
+		if (execve(pth, args[1], env) < 0)
 			error_msg("execve failed in child pid[1]");
+		free(pth);
+		pth = NULL;
 	}
 }
