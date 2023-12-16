@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:27 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/16 12:34:13 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/16 12:53:49 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[], char *env[])
 
 	pth = get_cmd_path(argv[2], env);
 	error_check(pth, "Command couldn't be found: get_cmd_path()", PTR);
-	//free(pth);
+	free(pth);
 	printf("path: %s\n", pth);
 
 	if (argc < 1)

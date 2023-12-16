@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 17:44:56 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/16 12:42:54 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/16 12:53:35 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ static int	get_path_indx(char *env[]);
 char	*get_cmd_path(char *cmd, char *env[])
 {
 	char	**paths;
-	char	*tmp;
-	char	*pth;
+	char	*pth[2];
 	int		loc;
 	int		i;
 
@@ -29,17 +28,17 @@ char	*get_cmd_path(char *cmd, char *env[])
 	i = 0;
 	while (paths[++i])
 	{
-		tmp = ft_strjoin(paths[i], "/");
-		error_check(tmp, "Mem alloc failed for strjoin in get_cmd_path", PTR);
-		pth = ft_strjoin(tmp, cmd);
-		error_check(pth, "Mem alloc failed for strjoin in get_cmd_path", PTR);
-		free(tmp);
-		if (access(pth, F_OK) == 0)
+		pth[0] = ft_strjoin(paths[i], "/");
+		error_check(pth[0], "Mem alloc fail for strjoin in get_cmd_path", PTR);
+		pth[1] = ft_strjoin(pth[0], cmd);
+		error_check(pth[1], "Mem alloc fail for strjoin in get_cmd_path", PTR);
+		free(pth[0]);
+		if (access(pth[1], F_OK) == 0)
 		{
 			free_split(paths);
-			return (pth);
+			return (pth[1]);
 		}
-		free(pth);
+		free(pth[1]);
 	}
 	return (free_split(paths), NULL);
 }
