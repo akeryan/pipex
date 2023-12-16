@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:49 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/16 14:10:28 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/16 20:37:35 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ typedef enum e_arg_type
 	INT,
 	PTR
 }	t_arg_type;
+
+typedef struct	s_data
+{
+	char	**args[2];
+	int		pids[2];
+	int		pipes[2];
+	int		file_fd[2];
+	char	*pth;
+} t_data;
 
 void	parsing(int argc, char *argv[]);
 char	*get_cmd_path(char *cmd, char *env[]);
