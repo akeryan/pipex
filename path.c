@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 17:44:56 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/16 11:39:29 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/16 12:42:54 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static int	get_path_indx(char *env[]);
 
-char	*get_path(char *cmd, char *env[])
+char	*get_cmd_path(char *cmd, char *env[])
 {
 	char	**paths;
-	char	*_pth;
+	char	*tmp;
 	char	*pth;
 	int		loc;
 	int		i;
@@ -29,17 +29,19 @@ char	*get_path(char *cmd, char *env[])
 	i = 0;
 	while (paths[++i])
 	{
-		_pth = ft_strjoin(paths[i], "/");
-		pth = ft_strjoin(_pth, cmd);
+		tmp = ft_strjoin(paths[i], "/");
+		error_check(tmp, "Mem alloc failed for strjoin in get_cmd_path", PTR);
+		pth = ft_strjoin(tmp, cmd);
+		error_check(pth, "Mem alloc failed for strjoin in get_cmd_path", PTR);
+		free(tmp);
 		if (access(pth, F_OK) == 0)
 		{
-			free(_pth);
+			free_split(paths);
 			return (pth);
 		}
 		free(pth);
-		free(_pth);
 	}
-	return (NULL);
+	return (free_split(paths), NULL);
 }
 
 static int	get_path_indx(char *env[])
@@ -52,7 +54,7 @@ static int	get_path_indx(char *env[])
 	{
 		loc = ft_strncmp(env[i], "PATH", 4);
 		if (loc == 0)
-			return (i);	
+			return (i);
 		i++;
 	}
 	return (-1);

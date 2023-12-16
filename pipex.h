@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:49 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/16 11:33:08 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/16 11:46:27 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef enum e_arg_type
 	PTR
 }	t_arg_type;
 
-char	*get_path(char *cmd, char *env[]);
+char	*get_cmd_path(char *cmd, char *env[]);
 
 //error managing
 void	error_check(void *ptr, char *msg, t_arg_type type);
