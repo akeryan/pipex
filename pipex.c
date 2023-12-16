@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:27 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/16 13:43:54 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/16 15:54:40 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ int main(int argc, char *argv[], char *env[])
 	char	*pth;
 
 	parsing(argc, argv);
-
-	if (argc < 1)
-	error_msg("Number of arguments in main is incorrect");
 
 	file_fd[0] = open(argv[1], O_RDONLY);
 	error_check(&file_fd[0], "File openning failed: file_fd[0]", INT);
