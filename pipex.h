@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:49 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/15 20:52:48 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/16 11:33:08 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,17 @@
 #include <stdio.h>
 #include "libft/libft.h"
 
+typedef enum e_arg_type
+{
+	INT,
+	PTR
+}	t_arg_type;
+
 char	*get_path(char *cmd, char *env[]);
-void	error_ptr(void *ptr, char *f_name);
-void	error_value(int v, char *f_name);
+
+//error managing
+void	error_check(void *ptr, char *msg, t_arg_type type);
+void	error_msg(char *msg);
 
 # ifndef BONUS_AVAILABLE
 #  define BONUS 0

@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:27 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/15 20:38:30 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/16 11:40:14 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,10 @@
 int main(int argc, char *argv[], char *env[])
 {
 	char	**args[2];
-	int		pid[2]; // process id's
-	int		pipe_fd1[2]; // pipes
-	int		file_fd[2]; // files
+	int		pid[2];
+	int		pipe_fd1[2];
+	int		file_fd[2];
 
-	//int i = 0;
-	//while(env[i] != NULL)
-	//{
-		//printf("%s\n", env[i]);
-		//i++;
-	//}
 	char *pth = get_path(argv[2], env);
 	if (!pth)
 	{
@@ -63,7 +57,8 @@ int main(int argc, char *argv[], char *env[])
 		//char *path = "/bin/";
 		//cmd[0] = ft_strjoin(path, args[0][0]);
 		//if (cmd[0] == NULL) {perror("memmory allocation for cmd[0] failded"); return (1); }
-		if (execve(env[0], args[0], env) == -1) {	perror("execve broke, smth went wrong"); return (1); }
+		if (execve(env[0], args[0], env) == -1) //{	perror("execve broke, smth went wrong"); return (1); }
+			error_msg("hahah");
 	}	
 	
 	pid[1] = fork();

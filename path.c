@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 17:44:56 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/15 20:54:08 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/16 11:39:29 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char	*get_path(char *cmd, char *env[])
 	int		i;
 
 	loc = get_path_indx(env);
-	error_value(loc, "get_path_indx()");
+	error_check(&loc, "No PATH: get_path_indx()", INT);
 	paths = ft_split(env[loc], ':');
-	error_ptr(paths, "ft_split");
+	error_check(paths, "Memory allocation failed in ft_split()", PTR);
 	i = 0;
 	while (paths[++i])
 	{
