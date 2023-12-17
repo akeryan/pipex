@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 20:46:23 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/17 13:37:31 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/17 15:20:16 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	error_check(void *ptr, char *msg, t_arg_type type)
 			error_msg(msg);
 	}
 	else
-		error_msg("Flag is wrong");
+		perror_msg("Flag is wrong");
 	return ;
 }
 
