@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:03:25 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/17 20:03:39 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/18 10:04:11 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char ***read_args(char *args[], int num)
 	i = -1;
 	while (++i < num)
 	{
-		out[i] = ft_split(args[i], ' ');
+		out[i] = ft_split(args[i + 2], ' ');
 		if (out[i] == NULL)
 		{
 			while (--i >= 0)
