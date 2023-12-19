@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:27 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/18 11:35:13 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/19 17:09:38 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(int argc, char *argv[], char *env[])
 	t_data	d;
 
 	int my = open("my_file", O_RDWR | O_CREAT, 0664);
+	(void)my;
 
 	init(&d, argc, argv);
 
@@ -28,13 +29,12 @@ int main(int argc, char *argv[], char *env[])
 		d.pth = get_cmd_path(d.args[d.i][0], env);
 		printf("(%d): path = %s\n", d.i, d.pth);
 	}
-	d.i = 0;	
-	while (d.i < d.proc_num - 1)
+	d.i = -1;	
+	while (++d.i < d.proc_num - 1)
 	{
 		if (pipe(d.pipes[d.i]) == -1)
 			perror_msg("Pipe failed: pipes");
 		// if failed -> close created pipes...
-		d.i++;
 	}
 
 	d.i = -1;
@@ -49,16 +49,8 @@ int main(int argc, char *argv[], char *env[])
 
 			if (d.i == 0)
 			{
-				char p[20] = "The sun is shining";
-				if (read(d.file_fd[0], p, 5) == -1)
-					perror_msg("Error: read failed");
-				printf("Read from file: %s\n", p);
-
 				if (dup2(d.file_fd[0], STDIN_FILENO) == -1)
 					perror_msg("dup2 failed");
-				printf("file_fd(%d) = %d\n", d.i, d.file_fd[0]);
-				//if (write(my, p, 5) == -1)
-					//perror_msg("Error: write failed");
 			}
 			else
 			{
@@ -76,19 +68,34 @@ int main(int argc, char *argv[], char *env[])
 				if (dup2(d.pipes[d.i][1], STDOUT_FILENO) == -1)
 					perror_msg("dup2 failed for pipes in main");
 			}
-			close(d.pipes[d.i][0]);
-			close(d.pipes[d.i][1]);
-			close(d.file_fd[0]);
-			close(d.file_fd[1]);
 
+			printf("Parent process printing\n");
 			d.pth = get_cmd_path(d.args[d.i][0], env);
-			write(my, d.pth, ft_strlen(d.pth));	
+			printf("path from childe 1: %s\n", d.pth);
+			printf("WOOHOOOO\n");
+			printf("ARGS = %s\n", d.args[d.i][0]);
+
+			//close(d.pipes[d.i][0]);
+			//close(d.pipes[d.i][1]);
+			//close(d.file_fd[0]);
+			//close(d.file_fd[1]);
+
 
 			if (execve(d.pth, d.args[d.i], env) == -1)
 				perror_msg("execve failed");
 			free(d.pth);
 			d.pth = NULL;
-			return (0);
+			//wait(NULL);
+			
+			
+			//if(d.i == 0)
+			//{
+				//char buf[20];
+				//read(d.pipes[0][0], buf, 10);
+				//write(my, buf, 10);
+
+			//}
+			//return (0);
 		}
 	}
 	wait(NULL);

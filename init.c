@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:03:25 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/18 10:04:11 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:48:36 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init(t_data *d, int argc, char *argv[])
 	d->args = read_args(argv, d->proc_num);
 	d->pids = get_pids(d->proc_num);
 	d->pipes = get_pipes(d->proc_num - 1);	
-	d->file_fd = get_file_fds(argv[0], argv[argc - 1]);
+	d->file_fd = get_file_fds(argv[1], argv[argc - 1]);
 	d->pth = NULL;
 	d->i = 0;
 }
