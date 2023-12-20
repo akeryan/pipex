@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:49 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/17 19:42:21 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:40:30 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_data
 void	init(t_data *d, int argc, char *argv[]);
 int		parsing(int argc, char *argv[]);
 char	*get_cmd_path(char *cmd, char *env[]);
+void	destroy(t_data *d);
 
 //error managment
 void	error_check(void *ptr, char *msg, t_arg_type type);

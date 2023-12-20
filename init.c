@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:03:25 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/18 11:48:36 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:47:26 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char ***read_args(char *args[], int num)
 
 	if (num <= 0)
 		return (NULL);
-	out = (char ***)malloc(num * sizeof(char **));
+	out = (char ***)malloc((num + 1) * sizeof(char **));
 	error_check(out, "Error: malloc failed for split in read_args", PTR);
 	i = -1;
 	while (++i < num)
@@ -49,6 +49,7 @@ static char ***read_args(char *args[], int num)
 			error_msg("Error: malloc failed for split in read_args");
 		}
 	}
+	out[num] = NULL;
 	return (out);
 }
 
@@ -66,7 +67,7 @@ static int	**get_pipes(int len)
 	int	**pipes;
 	int	i;
 
-	pipes = (int **)malloc(len * sizeof(int *));
+	pipes = (int **)malloc((len + 1) * sizeof(int *));
 	i = -1;
 	while (++i < len)
 	{
@@ -79,6 +80,7 @@ static int	**get_pipes(int len)
 			error_msg("Error: malloc failed in get_pipes()");
 		}
 	}
+	pipes[len] = NULL;
 	return (pipes);
 }
 
@@ -89,7 +91,7 @@ static int	*get_file_fds(char *file1, char *file2)
 	file_fd = (int *)malloc(2 * sizeof(int));
 	file_fd[0] = open(file1, O_RDONLY);
 	error_check(&file_fd[0], "File openning failed: file_fd[0]", INT);
-	file_fd[1] = open(file2, O_RDWR | O_CREAT, 0664);
+	file_fd[1] = open(file2, O_RDWR | O_CREAT | O_TRUNC, 0664);
 	error_check(&file_fd[1], "File openning failed: file_fd[1]", INT);
 	return (file_fd);
 }
