@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:46 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 15:21:02 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 19:03:02 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	clean_pipes(int **p)
 	int	k;
 
 	k = -1;
-	while (p[k])
+	while (p[++k])
 		free(p[k]);
 	free(p);
 }

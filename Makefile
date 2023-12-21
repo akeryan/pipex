@@ -6,7 +6,7 @@
 #    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 19:39:20 by akeryan           #+#    #+#              #
-#    Updated: 2023/12/21 16:06:27 by akeryan          ###   ########.fr        #
+#    Updated: 2023/12/21 20:21:21 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,19 @@ CC			= cc
 
 OBJ = $(patsubst %.c, %.o, $(MANDATORY))
 
+CFLAGS = $(FLAGS)
+ifdef YES
+CFLAGS += -D BONUS_AVAILABLE
+endif
+
 $(NAME): sublibs $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) $(LINKS)  -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LINKS)  -o $(NAME)
+
+bonus:
+	make YES=1 $(NAME)
 
 %.o: $(SRC_DIR)/%.c 
-	$(CC) -Ilibft $(FLAGS) -c $< -o $@  
+	$(CC) -Ilibft $(CFLAGS) -c $< -o $@  
 
 all: $(NAME)
 

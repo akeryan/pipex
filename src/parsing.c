@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:33:31 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 15:21:49 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 19:18:00 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	parsing(int argc, char *argv[])
 	{
 		if (argc != 5)
 			error_msg("Error: number of arguments is incorrect");
-		return (2);
+		return (argc - 3);
 	}
 	else if (BONUS == 1)
 	{
