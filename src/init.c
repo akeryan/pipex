@@ -6,11 +6,11 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:03:25 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 15:13:50 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 15:21:37 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
 static char	***read_args(char *args[], int num);
 static int	**get_pipes(int len);

@@ -6,11 +6,11 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 17:44:56 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 15:14:29 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 15:21:55 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
 static int	get_path_indx(char *env[]);
 

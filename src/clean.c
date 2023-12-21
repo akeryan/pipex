@@ -1,23 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 14:31:03 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 15:14:03 by akeryan          ###   ########.fr       */
+/*   Created: 2023/12/20 15:30:46 by akeryan           #+#    #+#             */
+/*   Updated: 2023/12/21 15:21:02 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
-int	main(int argc, char **argv, char **env)
+static void	clean_args(char ***args);
+static void	clean_pipes(int **p);
+
+void	destroy(t_data *d)
 {
-	t_data	d;
+	clean_args(d->args);
+	d->args = NULL;
+	free(d->pids);
+	clean_pipes(d->pipes);
+}
 
-	init(&d, argc, argv);
-	pipex(&d, argc, argv, env);
-	destroy(&d);
-	return (0);
+static void	clean_args(char ***args)
+{
+	int	k;
+
+	k = -1;
+	while (args[++k])
+		free_split(args[k]);
+	free(args);
+}
+
+static void	clean_pipes(int **p)
+{
+	int	k;
+
+	k = -1;
+	while (p[k])
+		free(p[k]);
+	free(p);
 }

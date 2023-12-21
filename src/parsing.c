@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 20:46:23 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 15:13:21 by akeryan          ###   ########.fr       */
+/*   Created: 2023/12/14 14:33:31 by akeryan           #+#    #+#             */
+/*   Updated: 2023/12/21 15:21:49 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
-void	error_check(void *ptr, char *msg, t_arg_type type)
+int	parsing(int argc, char *argv[])
 {
-	if (type == PTR)
+	if (BONUS == 0)
 	{
-		if (ptr == NULL)
-			error_msg(msg);
+		if (argc != 5)
+			error_msg("Error: number of arguments is incorrect");
+		return (2);
 	}
-	else if (type == INT)
+	else if (BONUS == 1)
 	{
-		if (*(int *)ptr < 0)
-			error_msg(msg);
+		if (argc < 5)
+			error_msg("Error: number of arguments is incorrect");
+		return (argc - 3);
 	}
-	else
-		perror_msg("Flag is wrong");
-	return ;
-}
-
-void	error_msg(char *msg)
-{
-	printf("%s\n", msg);
-	exit(EXIT_FAILURE);
-}
-
-void	perror_msg(char *msg)
-{
-	perror(msg);
-	exit(EXIT_FAILURE);
+	(void)argv;
 }

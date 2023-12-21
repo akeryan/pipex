@@ -6,11 +6,11 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:27 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 15:12:31 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 15:22:18 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
 static void	execve_cmd(t_data *d, int argc, char **argv, char **env);
 
@@ -21,7 +21,6 @@ void	pipex(t_data *d, int argc, char **argv, char *env[])
 	{
 		if (pipe(d->pipes[d->i]) == -1)
 			perror_msg("Pipe failed: pipes");
-		// if failed -> close created pipes...
 	}
 	d->i = -1;
 	while (++d->i < d->proc_num)

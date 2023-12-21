@@ -6,11 +6,11 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 09:11:16 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 15:15:07 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 15:22:06 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
 void	dup_infile(int *fd, char *file)
 {
