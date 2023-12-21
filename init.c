@@ -6,13 +6,13 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:03:25 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 09:57:16 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 15:13:50 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static char ***read_args(char *args[], int num);
+static char	***read_args(char *args[], int num);
 static int	**get_pipes(int len);
 static int	*get_pids(int len);
 
@@ -21,12 +21,12 @@ void	init(t_data *d, int argc, char *argv[])
 	d->proc_num = parsing(argc, argv);
 	d->args = read_args(argv, d->proc_num);
 	d->pids = get_pids(d->proc_num);
-	d->pipes = get_pipes(d->proc_num - 1);	
+	d->pipes = get_pipes(d->proc_num - 1);
 	d->pth = NULL;
 	d->i = 0;
 }
 
-static char ***read_args(char *args[], int num)
+static char	***read_args(char *args[], int num)
 {
 	char	***out;
 	int		i;

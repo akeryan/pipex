@@ -6,13 +6,11 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:33:31 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/17 15:27:11 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 15:14:21 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-//static void	check_quote_num(char *args[]);
 
 int	parsing(int argc, char *argv[])
 {
@@ -30,22 +28,3 @@ int	parsing(int argc, char *argv[])
 	}
 	(void)argv;
 }
-
-//static void	check_quote_num(char *args[])
-//{
-	//int	num;
-	//int	i;
-	//int	j;
-
-	//i = 0;
-	//num = 0;
-	//while (args[++i])
-	//{
-		//j = -1;
-		//while (args[i][++j])
-			//if (args[i][j] == '"')
-				//num++;
-	//}
-	//if (num % 2 != 0)
-		//error_msg("Error: there is an unclosed quote");
-//}
