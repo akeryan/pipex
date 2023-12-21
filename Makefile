@@ -6,16 +6,17 @@
 #    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 19:39:20 by akeryan           #+#    #+#              #
-#    Updated: 2023/12/21 20:21:21 by akeryan          ###   ########.fr        #
+#    Updated: 2023/12/21 22:18:29 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= pipex
 FLAGS		= -Wall -Wextra -Werror
-LINKS		= -Ilibft -Llibft -lft
+LINKS		= -Ilibft -Ift_printf -Llibft -Lft_printf -lft -lftprintf
 
 SRC_DIR		= src
 LIBFT_DIR	= libft
+FT_PRINT_DIR = ft_printf
 MANDATORY	= pipex.c path.c error.c parsing.c init.c clean.c utils.c main.c
 CC			= cc
 
@@ -43,18 +44,25 @@ libft_build:
 		/Library/Developer/CommandLineTools/usr/bin/make -C $(LIBFT_DIR); \
 	fi
 
+ft_printf_build:
+	if [ ! -f $(FT_PRINT_DIR)/libftprintf.a ]; then \
+		/Library/Developer/CommandLineTools/usr/bin/make -C $(FT_PRINT_DIR); \
+	fi
+
 submodules:
 	git submodule init
 	git submodule update
 
-sublibs: submodules libft_build
+sublibs: submodules libft_build ft_printf_build
 
 clean:
 	make -C $(LIBFT_DIR) clean
+	make -C $(FT_PRINT_DIR) clean
 	rm -f $(OBJ)
 
 fclean: clean
 	make -C $(LIBFT_DIR) fclean
+	make -C $(FT_PRINT_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all

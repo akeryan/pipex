@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:27 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 15:22:18 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 21:08:42 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ static void	execve_cmd(t_data *d, int argc, char **argv, char **env)
 		close_pipes(d->pipes, d->proc_num - 1);
 		d->pth = get_cmd_path(d->args[d->i][0], env);
 		error_check(d->pth, "get_cmd_path() failed", PTR);
-		if (execve(d->pth, d->args[d->i], env) == -1)
-			perror_msg("execve failed");
+		//iif (execve(d->pth, d->args[d->i], env) == -1)
+		execve(d->pth, d->args[d->i], env);
+		perror("execve failed");
 		exit(EXIT_FAILURE);
 	}
 }

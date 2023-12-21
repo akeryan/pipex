@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 20:46:23 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 16:22:23 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 22:03:49 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	error_check(void *ptr, char *msg, t_arg_type type)
 	if (type == PTR)
 	{
 		if (ptr == NULL)
-			error_msg(msg);
+			perror_msg(msg);
 	}
 	else if (type == INT)
 	{
 		if (*(int *)ptr < 0)
-			error_msg(msg);
+			perror_msg(msg);
 	}
 	else
 		perror_msg("Flag is wrong");
@@ -31,7 +31,7 @@ void	error_check(void *ptr, char *msg, t_arg_type type)
 
 void	error_msg(char *msg)
 {
-	printf("%s\n", msg);
+	ft_printf(1, "%s\n", msg);
 	exit(EXIT_FAILURE);
 }
 

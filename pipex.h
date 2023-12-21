@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:49 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 14:35:56 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 22:14:52 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "libft/libft.h"
+# include "ft_printf/ft_printf.h"
 
 # ifndef BONUS_AVAILABLE
 #  define BONUS 0
