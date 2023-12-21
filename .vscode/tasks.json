@@ -1,0 +1,10 @@
+{
+    "tasks": [
+		{
+			"label": "MyBuild",
+			"type": "shell",
+			"command": "make all"
+		}
+	],
+    "version": "2.0.0"
+}

@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:46 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/20 16:00:32 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/20 16:18:19 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void destroy(t_data *d)
 	d->args = NULL;
 	free(d->pids);
 	clean_pipes(d->pipes);
-	free(d->file_fd);
 }
 
 static void clean_args(char ***args)

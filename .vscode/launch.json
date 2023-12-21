@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Launch",
+			"program": "/Users/akeryan/repos/pipex",
+			"args": ["file1", "cat", "wc", "file2"],
+			"cwd": "${workspaceFolder}",
+			"preLaunchTask": "MyBuild", // Name of the task to build your project
+		}
+    ]
+}

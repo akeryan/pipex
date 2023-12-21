@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:49 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/20 15:40:30 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/21 10:44:30 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ typedef struct s_data
 	char	***args;
 	int		**pipes;
 	int		*pids;
-	int		*file_fd;
 	char	*pth;
+	int		infile;
+	int		outfile;
 	int		i;
 }	t_data;
 
@@ -46,6 +47,9 @@ void	init(t_data *d, int argc, char *argv[]);
 int		parsing(int argc, char *argv[]);
 char	*get_cmd_path(char *cmd, char *env[]);
 void	destroy(t_data *d);
+void	dup_infile(int *fd, char *file);
+void	dup_outfile(int *fd, char *file);
+void	close_pipes(int **pipes, int len);
 
 //error managment
 void	error_check(void *ptr, char *msg, t_arg_type type);
