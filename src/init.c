@@ -6,17 +6,17 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:03:25 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/21 16:11:45 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/22 10:26:31 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-static char	***read_args(char *args[], int num);
+static char	***read_args(char **args, int num);
 static int	**get_pipes(int len);
 static int	*get_pids(int len);
 
-void	init(t_data *d, int argc, char *argv[])
+void	init(t_data *d, int argc, char **argv)
 {
 	d->proc_num = parsing(argc, argv);
 	d->args = read_args(argv, d->proc_num);
@@ -26,7 +26,7 @@ void	init(t_data *d, int argc, char *argv[])
 	d->i = 0;
 }
 
-static char	***read_args(char *args[], int num)
+static char	***read_args(char **args, int num)
 {
 	char	***out;
 	int		i;
@@ -44,7 +44,7 @@ static char	***read_args(char *args[], int num)
 			while (--i >= 0)
 				free(out[i]);
 			free(out);
-			error_msg("Error: malloc failed for split in read_args");
+			ft_printf(2, "Error: malloc in read_args: %s", strerror(errno));
 		}
 	}
 	out[num] = NULL;
@@ -75,7 +75,7 @@ static int	**get_pipes(int len)
 			while (--i >= 0)
 				free(pipes[i]);
 			free(pipes);
-			error_msg("Error: malloc failed in get_pipes()");
+			ft_printf(2, "Error: malloc in get_pipes(): %s\n", strerror(errno));
 		}
 	}
 	pipes[len] = NULL;
