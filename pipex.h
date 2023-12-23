@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:03:49 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/22 19:04:03 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/23 14:06:11 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@
 #  define BONUS 1
 # endif
 
+typedef struct s_word
+{
+	char	*str;
+	struct s_word	*next;
+}	t_word;
+
+typedef struct s_word_lst
+{
+	t_word	*top;
+	int		len;
+}	t_word_lst;
+
 typedef enum e_arg_type
 {
 	INT,
@@ -45,6 +57,22 @@ typedef struct s_data
 	int		outfile;
 	int		i;
 }	t_data;
+
+typedef struct	s_split_vars
+{
+	char	*start;
+	char	*end;
+	char	*first_part;
+	char	*prog;
+	char	*last_part;
+	int		wnum_f;
+	int		wnum_l;
+	char	**split_f;
+	char	**split_l;
+	int		fill_pos;
+	int		i;
+	char	**out;
+}	t_split_vars;
 
 void	pipex(t_data *d, int argc, char **argv, char **env);
 void	init(t_data *d, int argc, char **argv);
