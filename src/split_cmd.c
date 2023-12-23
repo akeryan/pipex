@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 13:33:53 by akeryan           #+#    #+#             */
-/*   Updated: 2023/12/23 14:18:45 by akeryan          ###   ########.fr       */
+/*   Updated: 2023/12/23 18:20:33 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	fcount_words(char const *str, char c);
 
 char	**split_cmd(char *str, char c)
 {
-	t_split_vars d;
+	t_split_vars	d;
 
 	d.start = ft_strchr(str, c);
 	d.end = ft_strrchr(str, c);
@@ -32,7 +32,7 @@ char	**split_cmd(char *str, char c)
 		d.split_f = ft_split(d.first_part, ' ');
 		d.split_l = ft_split(d.last_part, ' ');
 		d.fill_pos = -1;
-		while(d.split_f[++d.fill_pos])
+		while (d.split_f[++d.fill_pos])
 			d.out[d.fill_pos] = d.split_f[d.fill_pos];
 		d.out[d.fill_pos] = d.prog;
 		d.i = -1;

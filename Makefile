@@ -6,7 +6,7 @@
 #    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 19:39:20 by akeryan           #+#    #+#              #
-#    Updated: 2023/12/21 22:18:29 by akeryan          ###   ########.fr        #
+#    Updated: 2023/12/23 15:43:46 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LINKS		= -Ilibft -Ift_printf -Llibft -Lft_printf -lft -lftprintf
 SRC_DIR		= src
 LIBFT_DIR	= libft
 FT_PRINT_DIR = ft_printf
-MANDATORY	= pipex.c path.c error.c parsing.c init.c clean.c utils.c main.c
+MANDATORY	= pipex.c path.c error.c parsing.c init.c clean.c utils.c main.c split_cmd.c
 CC			= cc
 
 
